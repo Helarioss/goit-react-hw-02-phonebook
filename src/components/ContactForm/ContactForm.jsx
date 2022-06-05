@@ -24,7 +24,8 @@ class ContactForm extends Component {
     const { name, number } = this.state;
     const id = nanoid();
 
-    this.props.onSubmit({ id, name, number });
+    if (this.props.onSubmit({ id, name, number }))
+      this.setState({ ...INITIAL_STATE });
   };
 
   render() {

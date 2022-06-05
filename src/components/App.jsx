@@ -21,12 +21,14 @@ export class App extends Component {
 
     if (contacts.find(({ name }) => name === contact.name)) {
       Notify.failure(`${contact.name} is already in contacts`);
-      return;
+      return false;
     }
 
     this.setState(prevState => ({
       contacts: [contact, ...prevState.contacts],
     }));
+
+    return true;
   };
 
   deleteContact = contactId => {
