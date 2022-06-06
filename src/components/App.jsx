@@ -19,7 +19,12 @@ export class App extends Component {
   addContact = contact => {
     const { contacts } = this.state;
 
-    if (contacts.find(({ name }) => name === contact.name)) {
+    if (
+      contacts.find(
+        ({ name }) =>
+          name.toLocaleLowerCase() === contact.name.toLocaleLowerCase()
+      )
+    ) {
       Notify.failure(`${contact.name} is already in contacts`);
       return false;
     }
